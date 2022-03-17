@@ -1,20 +1,43 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
-	<head>
-		
-		<title>Users</title>
-	</head>
-	
-		<body>
-		<h1>Users</h1>
-		
-		<div th:each="user : ${users}">
-		
-			<span th:text="${user.userId}"></span><br/>
-			<span th:text="${user.username}"></span><br/>
-			<span th:text="${user.name}"></span><br/>
-			<span th:text="${user.password}"></span><br/>
-			<hr/>			
-		</div>
-	</body>
+<head>
+
+<title>Users</title>
+</head>
+
+<body>
+	<h1>Users</h1>
+	<!-- 	call method into thymeleaf -->
+	<div th:if="${#lists.size(users) == 1}">
+		<form action="" method="post">
+			<div>
+				<div>
+					<label>Username:</label> <input type="text"
+						th:field="${user.username}">
+				</div>
+				<div>
+					<label>Username:</label> <input type="password"
+						th:field="${user.password}">
+				</div>
+				<div>
+					<label>Full Name:</label> <input type="text"
+						th:field="${user.name}">
+				</div>
+				<div>
+					<input type="submit" value="Update User Account">
+				</div>
+			</div>
+		</form>
+	</div>
+
+	<div th:unless="${#lists.size(users) ==1}" th:each="user : ${users}">
+		<span th:text="${user.userId}"></span><br /> <span
+			th:text="${user.username}"></span><br /> <span
+			th:text="${user.name}"></span><br /> <span
+			th:text="${user.password}"></span><br />
+		<hr />
+	</div>
+
+
+</body>
 </html>

@@ -17,8 +17,13 @@ public class UserService {
 	public List<User> findAll() {
 		return userRepo.findAll();
 	}
+
 	public User findById(Long userId) {
 		Optional<User> findById = userRepo.findById(userId);
 		return findById.orElse(new User()); // if nothing found send an empty user to avoid NPE
+	}
+	
+	public User saveUser(User user) {
+		return userRepo.save(user);
 	}
 }

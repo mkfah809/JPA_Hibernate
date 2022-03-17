@@ -39,6 +39,12 @@ public class User {
 		return accounts;
 	}
 
+	@Override
+	public String toString() {
+		return "User [userId=" + userId + ", password=" + password + ", username=" + username + ", name=" + name
+				+ ", accounts=" + accounts + ", address=" + address + "]";
+	}
+
 	public void setAccounts(List<Account> accounts) {
 		this.accounts = accounts;
 	}
